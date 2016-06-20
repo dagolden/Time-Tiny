@@ -30,11 +30,11 @@ use overload 'ne'   => sub { "$_[0]" ne "$_[1]" };
 
 The C<new> constructor creates a new B<Time::Tiny> object.
 
-It takes three named params. C<hour> should be the hour of the day (0-23),
+It takes three named parameters. C<hour> should be the hour of the day (0-23),
 C<minute> should be the minute of the hour (0-59), and C<second> should be
 the second of the minute (0-59).
 
-These are the only params accepted.
+These are the only parameters accepted.
 
 Returns a new B<Time::Tiny> object.
 
@@ -155,7 +155,7 @@ sub from_string {
 =head2 as_string
 
 The C<as_string> method converts the time object to an ISO 8601
-time string, with seperators (see example in C<from_string>).
+time string, with separators (see example in C<from_string>).
 
 Returns a string.
 
@@ -175,7 +175,7 @@ sub as_string {
 
 The C<DateTime> method is used to create a L<DateTime> object
 that is equivalent to the B<Time::Tiny> object, for use in
-comversions and caluculations.
+conversions and calculations.
 
 As mentioned earlier, the object will be set to the 'C' locate,
 and the 'floating' time zone.
@@ -278,7 +278,7 @@ the usefulness greatly.
 
 To make up for this, B<if> you have L<DateTime> installed, any
 B<Time::Tiny> module can be inflated into the equivalent L<DateTime>
-as needing, loading L<DateTime> on the fly if necesary.
+as needing, loading L<DateTime> on the fly if necessary.
 
 For the purposes of date/time logic, all B<Time::Tiny> objects exist
 in the "C" locale, and the "floating" time zone (although obviously in a
