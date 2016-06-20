@@ -1,6 +1,8 @@
 Revision history for Time-Tiny
 
 {{$NEXT}}
+
+1.06      2016-06-20 14:39:46-04:00 America/New_York (TRIAL RELEASE)
     - David Golden taking over as maintainer
     - Fix tests with DateTime::Locale 1.00 and later
     - Fix documentation typos
