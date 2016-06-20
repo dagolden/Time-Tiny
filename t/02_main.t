@@ -62,7 +62,9 @@ SKIP: {
 	# Expand to a DateTime
 	my $dt = $date->DateTime;
 	isa_ok( $dt, 'DateTime' );
-	is( $dt->locale->id,      'C',        '->locate ok'   );
+	# DateTime::Locale version 1.00 changes "C" to "en-US-POSIX".
+	my $expected = eval { DateTime::Locale->VERSION(1) } ? "en-US-POSIX" : "C";
+	is( $dt->locale->id,      $expected,  '->locale ok'   );
 	is( $dt->time_zone->name, 'floating', '->timezone ok' );
 
 	# Compare accessor results
