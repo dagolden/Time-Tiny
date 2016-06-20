@@ -138,9 +138,11 @@ Returns a new B<Time::Tiny> object, or throws an exception on error.
 sub from_string {
 	my $string = $_[1];
 	unless ( defined $string and ! ref $string ) {
+		require Carp;
 		Carp::croak("Did not provide a string to from_string");
 	}
 	unless ( $string =~ /^(\d\d):(\d\d):(\d\d)$/ ) {
+		require Carp;
 		Carp::croak("Invalid time format (does not match ISO 8601 hh:mm:ss)");
 	}
 	$_[0]->new(
