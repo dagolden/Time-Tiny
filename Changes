@@ -1,6 +1,10 @@
 Revision history for Time-Tiny
 
 {{$NEXT}}
+    - David Golden taking over as maintainer
+    - Fix tests with DateTime::Locale 1.00 and later
+    - Fix documentation typos
+    - Ensure Carp is loaded before using it
 
 1.05 Wed  2 Dec 2009
     - POD fixes (MTROUT)
