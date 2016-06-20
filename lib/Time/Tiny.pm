@@ -1,106 +1,10 @@
-package Time::Tiny;
-
-=pod
-
-=head1 NAME
-
-Time::Tiny - A time object, with as little code as possible
-
-=head1 SYNOPSIS
-
-  # Create a time manually
-  $christmas = Time::Tiny->new(
-      hour   => 10,
-      minute => 45,
-      second => 0,
-      );
-  
-  # Show the current time
-  $now = Time::Tiny->now;
-  print "Hour   : " . $now->hour   . "\n";
-  print "Minute : " . $now->minute . "\n";
-  print "Second : " . $now->second . "\n";
-
-=head1 DESCRIPTION
-
-B<Time::Tiny> is a member of the L<DateTime::Tiny> suite of time modules.
-
-It implements an extremely lightweight object that represents a time,
-without any time data.
-
-=head2 The Tiny Mandate
-
-Many CPAN modules which provide the best implementation of a concept
-can be very large. For some reason, this generally seems to be about
-3 megabyte of ram usage to load the module.
-
-For a lot of the situations in which these large and comprehensive
-implementations exist, some people will only need a small fraction of the
-functionality, or only need this functionality in an ancillary role.
-
-The aim of the Tiny modules is to implement an alternative to the large
-module that implements a subset of the functionality, using as little
-code as possible.
-
-Typically, this means a module that implements between 50% and 80% of
-the features of the larger module, but using only 100 kilobytes of code,
-which is about 1/30th of the larger module.
-
-=head2 The Concept of Tiny Date and Time
-
-Due to the inherent complexity, Date and Time is intrinsically very
-difficult to implement properly.
-
-The arguably B<only> module to implement it completely correct is
-L<DateTime>. However, to implement it properly L<DateTime> is quite slow
-and requires 3-4 megabytes of memory to load.
-
-The challenge in implementing a Tiny equivalent to DateTime is to do so
-without making the functionality critically flawed, and to carefully
-select the subset of functionality to implement.
-
-If you look at where the main complexity and cost exists, you will find
-that it is relatively cheap to represent a date or time as an object,
-but much much more expensive to modify or convert the object.
-
-As a result, B<Time::Tiny> provides the functionality required to
-represent a date as an object, to stringify the date and to parse it
-back in, but does B<not> allow you to modify the dates.
-
-The purpose of this is to allow for date object representations in
-situations like log parsing and fast real-time work.
-
-The problem with this is that having no ability to modify date limits
-the usefulness greatly.
-
-To make up for this, B<if> you have L<DateTime> installed, any
-B<Time::Tiny> module can be inflated into the equivalent L<DateTime>
-as needing, loading L<DateTime> on the fly if necesary.
-
-For the purposes of date/time logic, all B<Time::Tiny> objects exist
-in the "C" locale, and the "floating" time zone (although obviously in a
-pure date context, the time zone largely doesn't matter).
-
-When converting up to full L<DateTime> objects, these local and time
-zone settings will be applied (although an ability is provided to
-override this).
-
-In addition, the implementation is strictly correct and is intended to
-be very easily to sub-class for specific purposes of your own.
-
-=head1 METHODS
-
-In general, the intent is that the API be as close as possible to the
-API for L<DateTime>. Except, of course, that this module implements
-less of it.
-
-=cut
-
 use strict;
-BEGIN {
-	require 5.004;
-	$Time::Tiny::VERSION = '1.05';
-}
+use warnings;
+package Time::Tiny;
+# ABSTRACT: A time object, with as little code as possible
+
+our $VERSION = '1.06';
+
 use overload 'bool' => sub () { 1 };
 use overload '""'   => 'as_string';
 use overload 'eq'   => sub { "$_[0]" eq "$_[1]" };
@@ -301,32 +205,105 @@ sub DateTime {
 
 1;
 
+__END__
+
 =pod
 
-=head1 SUPPORT
+=head1 SYNOPSIS
 
-Bugs should be reported via the CPAN bug tracker at
+  # Create a time manually
+  $christmas = Time::Tiny->new(
+      hour   => 10,
+      minute => 45,
+      second => 0,
+      );
+  
+  # Show the current time
+  $now = Time::Tiny->now;
+  print "Hour   : " . $now->hour   . "\n";
+  print "Minute : " . $now->minute . "\n";
+  print "Second : " . $now->second . "\n";
 
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Time-Tiny>
+=head1 DESCRIPTION
 
-For other issues, or commercial enhancement or support, contact the author.
+B<Time::Tiny> is a member of the L<DateTime::Tiny> suite of time modules.
 
-=head1 AUTHOR
+It implements an extremely lightweight object that represents a time,
+without any time data.
 
-Adam Kennedy E<lt>adamk@cpan.orgE<gt>
+=head2 The Tiny Mandate
+
+Many CPAN modules which provide the best implementation of a concept
+can be very large. For some reason, this generally seems to be about
+3 megabyte of ram usage to load the module.
+
+For a lot of the situations in which these large and comprehensive
+implementations exist, some people will only need a small fraction of the
+functionality, or only need this functionality in an ancillary role.
+
+The aim of the Tiny modules is to implement an alternative to the large
+module that implements a subset of the functionality, using as little
+code as possible.
+
+Typically, this means a module that implements between 50% and 80% of
+the features of the larger module, but using only 100 kilobytes of code,
+which is about 1/30th of the larger module.
+
+=head2 The Concept of Tiny Date and Time
+
+Due to the inherent complexity, Date and Time is intrinsically very
+difficult to implement properly.
+
+The arguably B<only> module to implement it completely correct is
+L<DateTime>. However, to implement it properly L<DateTime> is quite slow
+and requires 3-4 megabytes of memory to load.
+
+The challenge in implementing a Tiny equivalent to DateTime is to do so
+without making the functionality critically flawed, and to carefully
+select the subset of functionality to implement.
+
+If you look at where the main complexity and cost exists, you will find
+that it is relatively cheap to represent a date or time as an object,
+but much much more expensive to modify or convert the object.
+
+As a result, B<Time::Tiny> provides the functionality required to
+represent a date as an object, to stringify the date and to parse it
+back in, but does B<not> allow you to modify the dates.
+
+The purpose of this is to allow for date object representations in
+situations like log parsing and fast real-time work.
+
+The problem with this is that having no ability to modify date limits
+the usefulness greatly.
+
+To make up for this, B<if> you have L<DateTime> installed, any
+B<Time::Tiny> module can be inflated into the equivalent L<DateTime>
+as needing, loading L<DateTime> on the fly if necesary.
+
+For the purposes of date/time logic, all B<Time::Tiny> objects exist
+in the "C" locale, and the "floating" time zone (although obviously in a
+pure date context, the time zone largely doesn't matter).
+
+When converting up to full L<DateTime> objects, these local and time
+zone settings will be applied (although an ability is provided to
+override this).
+
+In addition, the implementation is strictly correct and is intended to
+be very easily to sub-class for specific purposes of your own.
+
+=head1 USAGE
+
+In general, the intent is that the API be as close as possible to the
+API for L<DateTime>. Except, of course, that this module implements
+less of it.
+
+=head1 HISTORY
+
+This module was written by Adam Kennedy in 2006.  In 2016, David Golden
+adopted it as a caretaker maintainer.
 
 =head1 SEE ALSO
 
 L<DateTime>, L<DateTime::Tiny>, L<Time::Tiny>, L<Config::Tiny>, L<ali.as>
-
-=head1 COPYRIGHT
-
-Copyright 2006 - 2009 Adam Kennedy.
-
-This program is free software; you can redistribute
-it and/or modify it under the same terms as Perl itself.
-
-The full text of the license can be found in the
-LICENSE file included with this module.
 
 =cut
