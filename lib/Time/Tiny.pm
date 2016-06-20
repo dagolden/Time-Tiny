@@ -19,7 +19,7 @@ use overload 'ne'   => sub { "$_[0]" ne "$_[1]" };
 
 =pod
 
-=head2 new
+=method new
 
   # Create a Time::Tiny object for midnight
   my $midnight = Time::Tiny->new(
@@ -47,7 +47,7 @@ sub new {
 
 =pod
 
-=head2 now
+=method now
 
   my $current_time = Time::Tiny->now;
 
@@ -76,7 +76,7 @@ sub now {
 
 =pod
 
-=head2 hour
+=method hour
 
 The C<hour> accessor returns the hour component of the time as
 an integer from zero to twenty-three (0-23) in line with 24-hour
@@ -90,7 +90,7 @@ sub hour {
 
 =pod
 
-=head2 minute
+=method minute
 
 The C<minute> accessor returns the minute component of the time
 as an integer from zero to fifty-nine (0-59).
@@ -103,7 +103,7 @@ sub minute {
 
 =pod
 
-=head2 second
+=method second
 
 The C<second> accessor returns the second component of the time
 as an integer from zero to fifty-nine (0-59).
@@ -123,7 +123,7 @@ sub second {
 
 =pod
 
-=head2 from_string
+=method from_string
 
 The C<from_string> method creates a new B<Time::Tiny> object from a string.
 
@@ -152,7 +152,7 @@ sub from_string {
 
 =pod
 
-=head2 as_string
+=method as_string
 
 The C<as_string> method converts the time object to an ISO 8601
 time string, with separators (see example in C<from_string>).
@@ -171,7 +171,7 @@ sub as_string {
 
 =pod
 
-=head2 DateTime
+=method DateTime
 
 The C<DateTime> method is used to create a L<DateTime> object
 that is equivalent to the B<Time::Tiny> object, for use in
