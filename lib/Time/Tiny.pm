@@ -280,13 +280,13 @@ the usefulness greatly.
 
 To make up for this, B<if> you have L<DateTime> installed, any
 B<Time::Tiny> module can be inflated into the equivalent L<DateTime>
-as needing, loading L<DateTime> on the fly if necessary.
+as needed, loading L<DateTime> on the fly if necessary.
 
 For the purposes of date/time logic, all B<Time::Tiny> objects exist
 in the "C" locale, and the "floating" time zone (although obviously in a
 pure date context, the time zone largely doesn't matter).
 
-When converting up to full L<DateTime> objects, these local and time
+When converting up to full L<DateTime> objects, these locale and time
 zone settings will be applied (although an ability is provided to
 override this).
 
