@@ -3,7 +3,7 @@ use warnings;
 package Time::Tiny;
 # ABSTRACT: A time object, with as little code as possible
 
-our $VERSION = '1.08';
+our $VERSION = '1.09';
 
 use overload 'bool' => sub () { 1 };
 use overload '""'   => 'as_string';
