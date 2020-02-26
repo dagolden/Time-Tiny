@@ -231,7 +231,7 @@ __END__
 B<Time::Tiny> is a member of the L<DateTime::Tiny> suite of time modules.
 
 It implements an extremely lightweight object that represents a time,
-without any time data.
+without any date data.
 
 =head2 The Tiny Mandate
 
